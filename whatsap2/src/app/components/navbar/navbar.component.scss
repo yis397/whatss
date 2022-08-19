@@ -1,0 +1,129 @@
+@import "/src/styles.scss";
+head{
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    
+    background-color: darkslategray;
+    img{
+        margin-right: 40%;
+        @include avatar();
+    }
+    .action{
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 40%;
+        button{
+            border: 0px;
+            background-color: darkslategray;
+           i{
+            font-size: 2rem;
+            color: gainsboro;
+           } 
+        }
+    }
+}
+///mensaje
+.mensaje{
+    padding: 2;
+    flex-direction: row;
+    @include flexCent();
+    justify-content: space-around;
+    padding: 1vmin;
+    .text1{
+     font-size: 3vmin;
+     font-weight: lighter;
+     
+    }
+    .text2{
+        font-size: 2vmin;
+        color: dimgray;
+        
+       }
+    .bell{
+        margin-right: 3 px;
+        @include flexCent();
+        background-color: cornflowerblue;
+        height: 8vh;
+        width: 8vh;
+        border-radius: 30vh;
+        background-repeat: no-repeat;
+        object-fit: cover;
+        object-position: center center;
+        i{
+            font-size: 2rem;
+
+        }
+    }
+}
+//search
+.search{
+    width: 100%;
+    background-color: gray;
+    border-radius: 20vh;
+    padding: 1vmin;
+    justify-content: space-around;
+    @include flexCent();
+    label{
+        background-color: gray;
+        border-radius: 1vh;
+        width: 100%;
+        i{
+            font-size: 3vmin;
+            color: gainsboro;
+            margin-right: 10px;
+        }
+        input{
+            border-radius: 20vh; 
+            width: 90%; 
+            height: 200%;
+            padding: 1vmin;
+        }
+    }
+}
+///card
+.contactos{
+    overflow-y: auto;
+    height: 68vh;
+
+    .card{
+        margin-top: 2vmin;
+        border-bottom: 1px solid black ;
+        @include flexCent();
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 1vmin;
+        img{
+         @include avatar();
+         height: 10vh;
+         width: 10vh;
+         margin-right: 2vmin;
+        }
+        .datos{
+            width: 80%;
+        .fecha{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            .text1{
+                width: 80%;
+                font-size: 3vmin;
+              }
+              .text2{
+                 font-size: 2vmin;
+                 color: dimgray;
+    
+              }
+        }
+    
+         .text2{
+            font-size: 2vmin;
+            color: dimgray;
+    
+         }
+        }
+    }
+}

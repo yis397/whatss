@@ -1,0 +1,31 @@
+<div class="body">
+<div class="contenido">
+
+    <div class="header">
+        <img src="https://ca-times.brightspotcdn.com/dims4/default/87be6da/2147483647/strip/true/crop/1970x1108+39+0/resize/1200x675!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F12%2Fa5%2F79e097ccf62312d18a025f22ce48%2Fhoyla-recuento-11-cosas-aman-gatos-top-001" alt="">
+        <p *ngIf="!isError">Login</p>
+        <p class="error" *ngIf="isError">Error en login</p>
+    </div>
+    <form 
+      autocomplete="off"
+      [formGroup]="formLogin"
+      (ngSubmit)="login()">
+
+          <input type="number" name="" id="" placeholder="Telefonico"
+          formControlName="tel">
+          <label class="error" for="" *ngIf="validCampos('tel')">campo requerido/incompleto</label>
+
+       <input type="password" name="" id="" placeholder="password"
+       formControlName="password">
+       <label class="error" for="" *ngIf="validCampos('password')">campo requerido/incompleto</label>
+
+       <button [disabled]="formLogin.invalid || isError" type="submit">Inicia</button>
+    </form>
+    <div class="foot">
+     <a href="">tienes una cuenta</a>
+    </div>
+</div>
+
+
+
+</div>

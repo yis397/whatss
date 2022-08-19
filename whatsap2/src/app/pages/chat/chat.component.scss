@@ -1,0 +1,118 @@
+@import "/src/styles.scss";
+
+.body{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(1,2.5fr 5fr);
+    grid-template-rows: repeat(1,1fr);
+    .nav{
+        background-color: aquamarine;
+    }
+    .chat{
+        background-color: cadetblue;
+        
+        .head{
+            padding: 1vmin;
+            display: flex;
+            flex-direction: row;
+            background-color: gray;
+            .datos{
+                display: flex;
+                flex-direction: row;
+               width: 80%;
+                img{
+                    @include avatar();
+                }
+                .texto{
+                    margin-left: 1vmin;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    @include datos();
+                }
+            }
+            .action{
+                @include flexCent();
+                justify-content: space-between;
+                width: 10vw;
+                i{
+                    color: gainsboro;
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        //mensajes
+        .mensajes{
+            height: 83vh;
+            overflow-y: auto;
+            padding: 3rem;
+            .card{
+                padding: 1rem;
+                background-color: gray;
+                border-radius: 10px;
+                max-width: 20vw;
+                position: relative;
+                ::after{
+                    content: "";
+                    position: absolute;
+                    bottom: 87%;
+                    right: 92%;
+                    width: 0; 
+                    height: 0; 
+                    border-left: 20px solid transparent;
+                    border-right: 20px solid transparent;  
+                    border-top: 20px solid gray;
+                }
+            }
+            ///
+            .card1{
+                float: right;
+                padding: 1rem;
+                background-color: gray;
+                border-radius: 10px;
+                max-width: 20vw;
+                position: relative;
+                ::after{
+                    content: "";
+                    position: absolute;
+                    bottom: 87%;
+                    left: 92%;
+                    width: 0; 
+                    height: 0; 
+                    border-left: 20px solid transparent;
+                    border-right: 20px solid transparent;  
+                    border-top: 20px solid gray;
+                }
+            }
+        }
+        //input
+        .search{
+            width: 100%;
+            background-color: gray;
+            border-radius: 10px;
+            padding: 1vmin;
+            justify-content: space-around;
+            @include flexCent();
+            label{
+                background-color: gray;
+                border-radius: 1vh;
+                width: 100%;
+                @include flexCent();
+                i{
+                    font-size: 3vmin;
+                    color: gainsboro;
+                    margin-right: 10px;
+                }
+                input{
+                    border-radius: 20vh; 
+                    width: 90%; 
+                    height: 200%;
+                    padding: 1vmin;
+                }
+            }
+        }
+        
+    }
+}

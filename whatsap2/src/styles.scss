@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+@mixin flexCent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin avatar{
+    height: 8vh;
+    width: 8vh;
+    border-radius: 30vh;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    object-position: center center;
+}
+@mixin datos{
+    .text1{
+        width: 80%;
+        font-size: 3vmin;
+      }
+      .text2{
+         font-size: 2vmin;
+         color: dimgray;
+
+      }
+}
