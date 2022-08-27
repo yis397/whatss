@@ -4,18 +4,15 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { of } from 'rxjs';
+import { IUser } from '../interfaces/models';
 
-interface IUser{
-  username?:string
-  tel:string
-}
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private baseurl=environment.baseUrl
-  private user:IUser={tel:""};
-  
+  private user:IUser={tel:"",uid:""};
+
   constructor(private http:HttpClient) { }
   setUser(user:IUser){
     this.user=user

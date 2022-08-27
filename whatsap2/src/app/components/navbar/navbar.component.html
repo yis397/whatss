@@ -1,51 +1,81 @@
-<head >
-   <img src="https://ca-times.brightspotcdn.com/dims4/default/87be6da/2147483647/strip/true/crop/1970x1108+39+0/resize/1200x675!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F12%2Fa5%2F79e097ccf62312d18a025f22ce48%2Fhoyla-recuento-11-cosas-aman-gatos-top-001" alt="">
+<div class="body">
 
-   <div class="action">
-      <button>
-         <i class="fa-solid fa-message"></i>
-      </button>
-      <button>
-        <i class="fa-solid fa-message"></i>
-     </button>
-     <button>
-        <i class="fa-solid fa-message"></i>
-     </button>
-   </div>
-</head>
+  <div class="add" *ngIf="ismodal">
+    <div class="body">
 
-
-<div class="mensaje">
-   <div class="bell">
-      <i class="fa-solid fa-bell-slash"></i>
-   </div>
-
-   <div>
-     <p class="text1">Recibe notificaciones de mensajes nuevos</p>
-     <p class="text2">Activar notificaciones de escritorio></p>
-   </div>
-</div>
-
-
-<div class="search">
-   <label for="">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input type="text">
-   </label>
-</div>
-
-<div class="contactos">
-
-   <div class="card" *ngFor="let item of [1,2,3,4,5,6,7,8]">
-      <img src="https://ca-times.brightspotcdn.com/dims4/default/87be6da/2147483647/strip/true/crop/1970x1108+39+0/resize/1200x675!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F12%2Fa5%2F79e097ccf62312d18a025f22ce48%2Fhoyla-recuento-11-cosas-aman-gatos-top-001" alt="">
       <div class="datos">
-         <div class="fecha">
-            <p class="text1">238 255 224 222</p>
-             <p class="text2">14:25</p>
-   
-         </div>
-           <p class="text2">Lorem, ipsum dolor sit amet.</p>
+
+        <h2>Agrega un contacto</h2>
+        <button (click)="openModal()">X</button>
       </div>
-   </div>
+
+      <form  (ngSubmit)="addContacto(form1)" #form1="ngForm" novalidate>
+      <div class="search">
+          <label for="">
+            <input type="number" ngModel name="newcontacto"  placeholder="Telefono">
+         </label>
+        </div>
+        <button type="submit">Add</button>
+       </form>
+       <span *ngIf="isErrorContacto && msgContacto.length!=0">{{msgContacto}}</span>
+    </div>
+  </div>
+
+
+  <head >
+     <img src="https://ca-times.brightspotcdn.com/dims4/default/87be6da/2147483647/strip/true/crop/1970x1108+39+0/resize/1200x675!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F12%2Fa5%2F79e097ccf62312d18a025f22ce48%2Fhoyla-recuento-11-cosas-aman-gatos-top-001" alt="">
+
+     <div class="action">
+        <button class="agregar" (click)="openModal()">
+           <i class="fa-solid fa-message"></i>
+        </button>
+        <button>
+          <i class="fa-solid fa-message"></i>
+       </button>
+       <button>
+          <i class="fa-solid fa-message"></i>
+       </button>
+     </div>
+  </head>
+
+
+  <div class="mensaje">
+     <div class="bell">
+        <i class="fa-solid fa-bell-slash"></i>
+     </div>
+
+     <div>
+       <p class="text1">Recibe notificaciones de mensajes nuevos</p>
+       <p class="text2">Activar notificaciones de escritorio></p>
+     </div>
+  </div>
+
+
+  <div class="search">
+     <label for="">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="search">
+     </label>
+  </div>
+
+  <div class="contactos" >
+
+    <div class="card" *ngFor="let item of contactos">
+       <button (click)="selectChat(item)">
+        <img src="https://ca-times.brightspotcdn.com/dims4/default/87be6da/2147483647/strip/true/crop/1970x1108+39+0/resize/1200x675!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F12%2Fa5%2F79e097ccf62312d18a025f22ce48%2Fhoyla-recuento-11-cosas-aman-gatos-top-001" alt="">
+        <div class="datos">
+           <div class="fecha">
+              <p class="text1">{{item.username??item.tel}}</p>
+               <p class="text2">14:25</p>
+
+           </div>
+             <p class="text2">Lorem, ipsum dolor sit amet.</p>
+        </div>
+      </button>
+     </div>
+
+  </div>
+
+
 
 </div>

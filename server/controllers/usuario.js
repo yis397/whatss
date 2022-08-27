@@ -24,11 +24,23 @@ const login=async(req,resp=response)=>{
     if(!exist)return resp.status(400).json({ok:false,msg:'Usuario inexistente'})
     const isPassword=bcrypt.compareSync(password,exist.password)
     if(!isPassword)return resp.status(400).json({ok:false,msg:'Password invalido'})
-    const token=await jws.setToken({tel,username:exist.username??"",uid:exist._id.toString()})
+    const user={tel,username:exist.username??"",uid:exist._id.toString()}
+    const token=await jws.setToken(user)
     return resp.status(200).json({
         ok:true,
-        user:{tel,username:exist.username},
+        user,
         token
     })
 }
-module.exports={register,login}
+const addContacto=async(req,resp=respons)=>{
+    const uid=req.uid;
+    const {telefono}=req.body;
+    const exist=await Usuario.findOne({tel:telefono})
+    if (!exist)return resp.status(400).json({ok:false,msg:'Usuario inexistente'})
+    await Usuario.updateOne({_id:uid[1]},{$push:{contactos:exist.id}})
+    return resp.status(200).json({
+        ok:true,
+        user:exist,
+    })
+}
+module.exports={register,login,addContacto}

@@ -17,7 +17,7 @@ const schemaMensaje=new mongoose.Schema({
     },
 
 },{timestamps:true})
-schemaUsuario.method('toJSON', function() {
+schemaMensaje.method('toJSON', function() {
     const { __v, ...object } = this.toObject();
     return object;
 });

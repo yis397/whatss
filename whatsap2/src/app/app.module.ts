@@ -8,7 +8,7 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const config: SocketIoConfig = {
   url: 'http://localhost:8080' , options: {}
 };
@@ -26,7 +26,8 @@ const config: SocketIoConfig = {
     AppRoutingModule,
     SocketIoModule.forRoot(config),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

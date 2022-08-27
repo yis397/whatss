@@ -11,4 +11,9 @@ ruta.post('/setMensaje',[
     validToken
 
 ],mensaje.setMensaje)
+
+ruta.get('/getMensaje/:id',[
+    expressValidator,
+    validToken
+],mensaje.getMensage)
 module.exports=ruta

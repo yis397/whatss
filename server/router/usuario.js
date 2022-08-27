@@ -2,6 +2,7 @@ const { Router } = require('express');
 const {check} =require ('express-validator')
 const user =require ('../controllers/usuario');
 const { expressValidator } =require ('../middleware/validator');
+const validToken =require ('../middleware/validToken');
  const ruta=Router();
  ruta.post('/register',[
     check('tel','Telefono requerido').notEmpty(),
@@ -14,5 +15,9 @@ ruta.post('/login',[
     check('password','Se necesita password').notEmpty(),
     expressValidator
 ],user.login)
+ruta.post('/addContacto',[
+    check('telefono','Telefono requerido').notEmpty(),
+    expressValidator,validToken
+],user.addContacto)
 
  module.exports= ruta

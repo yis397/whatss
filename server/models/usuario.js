@@ -15,7 +15,10 @@ const schemaUsuario=new mongoose.Schema({
     online:{
         type:Boolean,
         default:false
-    }
+    },
+    contactos:[{
+      type:mongoose.Schema.Types.ObjectId,ref:'Usurio'
+    }]
 })
 schemaUsuario.method('toJSON', function() {
     const { __v, _id, password, ...object } = this.toObject();
