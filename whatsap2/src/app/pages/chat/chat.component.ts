@@ -1,16 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ChatserviceService } from '../../service/chatservice.service';
 import { AuthService } from '../../service/auth.service';
-import { IUser,IContacto } from 'src/app/interfaces/models';
+import { IUser,IContacto, IMensajes, INewMensage } from 'src/app/interfaces/models';
 import { Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
 
-interface IMensajes{
-  remitente:string,
-  destino:string,
-  mensaje:string,
-  createdAt?:string,
-}
+
 interface IListMensaje{
   mensajes:IMensajes[],
   contacto:IContacto
@@ -24,6 +19,7 @@ export class ChatComponent implements OnInit,OnDestroy {
    public user:IUser={tel:"",uid:""};
    public idContacto:IContacto=null!
    public isChat:boolean=false;
+   public newMessenger:INewMensage={user:{tel:"",uid:""}};
    public listMensajes:IListMensaje[]=[];
    public selectConversacion:IListMensaje={mensajes:[],contacto:{uid:"",tel:"",online:false}};
    isSelectChat:boolean=false;
@@ -40,8 +36,10 @@ export class ChatComponent implements OnInit,OnDestroy {
        this.authS.setUser(user)
       }
       this.subscribeNewMensaje=this.chatService.listen('mensaje').subscribe(data=>{
-
-        this.selectConversacion.mensajes.push(data as any)
+        if(this.selectConversacion.contacto.tel!==(data as any).user.tel){
+          this.newMessenger={...(data as any)}
+        }
+        this.selectConversacion.mensajes.push((data as any).mensage )
       })
 
     }
@@ -67,20 +65,20 @@ export class ChatComponent implements OnInit,OnDestroy {
         if (data.ok) {
           this.listMensajes.push({contacto:contacto,mensajes:data.mensajes})
           this.selectConversacion.mensajes=data.mensajes
-          console.log(data);
         }
       })
       this.isChat=true
 
   }
   sendMensage(form2:NgForm){
+    console.log(this.user);
     const mensaje=form2.value.mensage
     const data:IMensajes={destino:this.selectConversacion.contacto.uid,remitente:this.user.uid,mensaje}
     this.chatService.sendMensaje(data)
     this.selectConversacion.mensajes.push(data)
   }
   selectChat(){
-    console.log('hola');
+
     this.isChat=!this.isChat
    }
 

@@ -23,17 +23,18 @@
 
 
   <head >
-     <img src="https://ca-times.brightspotcdn.com/dims4/default/87be6da/2147483647/strip/true/crop/1970x1108+39+0/resize/1200x675!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F12%2Fa5%2F79e097ccf62312d18a025f22ce48%2Fhoyla-recuento-11-cosas-aman-gatos-top-001" alt="">
+     <img src="https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posición-de-foto-gris-vector-de-ilu.jpg?ver=6" alt="">
 
      <div class="action">
         <button class="agregar" (click)="openModal()">
-           <i class="fa-solid fa-message"></i>
+         <i class="fa-solid fa-user-plus"></i>
         </button>
         <button>
-          <i class="fa-solid fa-message"></i>
+
+          <i class="fa-solid fa-gear"></i>
        </button>
-       <button>
-          <i class="fa-solid fa-message"></i>
+       <button (click)="logouth()">
+         <i class="fa-solid fa-arrow-right-to-bracket"></i>
        </button>
      </div>
   </head>
@@ -62,14 +63,18 @@
 
     <div class="card" *ngFor="let item of contactos">
        <button (click)="selectChat(item)">
-        <img src="https://ca-times.brightspotcdn.com/dims4/default/87be6da/2147483647/strip/true/crop/1970x1108+39+0/resize/1200x675!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F12%2Fa5%2F79e097ccf62312d18a025f22ce48%2Fhoyla-recuento-11-cosas-aman-gatos-top-001" alt="">
+        <img src="https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posición-de-foto-gris-vector-de-ilu.jpg?ver=6" alt="">
         <div class="datos">
            <div class="fecha">
               <p class="text1">{{item.username??item.tel}}</p>
                <p class="text2">14:25</p>
 
            </div>
-             <p class="text2">Lorem, ipsum dolor sit amet.</p>
+            <div class="estado">
+               <p class="text2">mensajes</p>
+               <div *ngIf="item.newMensaje??false"></div>
+
+            </div>
         </div>
       </button>
      </div>

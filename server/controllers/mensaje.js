@@ -14,11 +14,12 @@ const getMensage=async(req,res=response)=>{
   const contacto=req.params.id
   const mensajes=await Mensaje.find({
     $or: [
-      { de: uid, para: contacto },
-      { de: contacto, para: uid },
+      { destino: uid[1], remitente: contacto },
+      { destino: contacto, remitente: uid[1] },
   ]
   }) .sort({ createdAt: 'asc' })
   .limit(30);
+
   return res.status(200).json({
     ok:true,
     mensajes,

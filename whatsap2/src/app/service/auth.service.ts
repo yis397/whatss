@@ -15,6 +15,7 @@ export class AuthService {
 
   constructor(private http:HttpClient) { }
   setUser(user:IUser){
+  
     this.user=user
   }
   getUser(){
@@ -44,10 +45,12 @@ export class AuthService {
          if (ok) {
           localStorage.setItem('x-token',token)
           localStorage.setItem('user',JSON.stringify(user))
+          this.user=user
          }
       }),
       map(resp=>resp),
       catchError(err=>of(err.error)
       ))
   }
+
 }

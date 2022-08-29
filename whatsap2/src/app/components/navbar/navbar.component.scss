@@ -74,7 +74,8 @@
               border: 0px;
               background-color: $color2;
              i{
-              font-size: 2rem;
+              padding: .5rem;
+              font-size: 1.5rem;
               color: gainsboro;
              }
           }
@@ -174,8 +175,8 @@
         height: 75vh;
       }
       .card{
-
-   button{
+        button{
+     padding-right: 1rem;
 
     background-color: white;
      width: 100%;
@@ -197,7 +198,7 @@
          }
          .datos{
              width: 90%;
-
+   
          .fecha{
              display: flex;
              flex-direction: row;
@@ -223,16 +224,32 @@
 
                }
          }
-
-          .text2{
-            text-align: left;
-             font-size: 2vmin;
-             color: dimgray;
-             @include tablet{
-               font-size: 3vmin;
-             }
+          .estado{
+            @include flexCent();
+            flex-direction: row;
+            div{
+              height: 1rem;
+            width: 1rem;
+            border-radius: 5rem;
+            background: $color3;
+            }
+            .text2{
+              margin-right: auto;
+           /*    width: 15vw;
+              height: 5vh;
+              text-overflow: ellipsis;
+              overflow: hidden; */
+              text-align: left;
+               font-size: 2vmin;
+               color: dimgray;
+               @include tablet{
+                 font-size: 3vmin;
+               }
+  
+            }
 
           }
+
          }
         }
    }

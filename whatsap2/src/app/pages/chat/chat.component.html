@@ -1,6 +1,6 @@
 <div class="body">
    <div className="nav">
-    <app-navbar [usuario]="user" (getMensajes)="getMensajes($event)"></app-navbar>
+    <app-navbar [usuario]="user" [newmensaje]="newMessenger" (getMensajes)="getMensajes($event)"></app-navbar>
    </div>
 
    <div class="placeholder" *ngIf="!isChat">
@@ -42,6 +42,7 @@
 
   <div [ngClass]="item.remitente==user.uid?'card1':'card'">
      <p>{{item.mensaje}}</p>
+
   </div>
 </div>
 

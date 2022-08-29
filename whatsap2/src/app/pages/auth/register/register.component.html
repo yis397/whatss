@@ -2,7 +2,7 @@
     <div class="contenido">
 
         <div class="header">
-            <img src="https://ca-times.brightspotcdn.com/dims4/default/87be6da/2147483647/strip/true/crop/1970x1108+39+0/resize/1200x675!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F12%2Fa5%2F79e097ccf62312d18a025f22ce48%2Fhoyla-recuento-11-cosas-aman-gatos-top-001" alt="">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/479px-WhatsApp.svg.png" alt="">
             <p *ngIf="!isError">Registrate</p>
             <p class="error" *ngIf="isError">{{msg}}</p>
         </div>
@@ -17,10 +17,11 @@
            <label class="error"  *ngIf="validCampos('password')" for="">requerido</label>
            <input type="password" formControlName="password2" name="" id="" placeholder="Verifica password">
            <label class="error"  *ngIf="validCampos('password2')" for="">requerido</label>
+           
            <button type="submit" [disabled]="formRegister.invalid || isError">Inicia</button>
         </form>
         <div class="foot">
-         <a href="">tienes una cuenta</a>
+         <a href="auth/login">tienes una cuenta</a>
         </div>
     </div>
 

@@ -22,19 +22,18 @@ const { isUser } = require("../helpers/jws");
            }
             await   usuarioConectado(uid)
             socket.join(uid)
-            console.log(uid);
+    
             this.io.to(uid).emit('contactos',await getListContactos(uid))
 
             socket.on('mensaje',async(data)=>{
                 const mensaje=await mensageSend(data)
-                this.io.to(mensaje.destino.toString()).emit('mensaje',mensaje)
-   
-                
+               
+                socket.to(data.destino.toString()).emit('mensaje',mensaje)
             })
 
            socket.on('disconnect', async() =>{
             await usuarioDesconectado(uid)
-            console.log('cliente desconectado');
+            
             this.io.to(uid).emit('contactos',await getListContactos(uid))
            })
             

@@ -9,12 +9,12 @@ const jws=require('../helpers/jws')
     if(exist)return resp.status(400).json({ok:false,msg:'Usuario existente'})
     const salt = bcrypt.genSaltSync(5);
     const passwordhash = bcrypt.hashSync(password, salt);
-    const user=await new Usuario({tel,password:passwordhash,username}).save()
-    const token=await jws.setToken({tel,username,uid:user._id.toString()})
+    const user=await new Usuario({tel,password:passwordhash,username:username.toLowerCase()}).save()
+    const token=await jws.setToken({tel,username:username.toLowerCase(),uid:user._id.toString()})
 
    return resp.status(200).json({
         ok:true,
-        user:{tel,username},
+        user:{tel,username,uid:user._id.toString()},
         token   
     })
 }
@@ -24,7 +24,7 @@ const login=async(req,resp=response)=>{
     if(!exist)return resp.status(400).json({ok:false,msg:'Usuario inexistente'})
     const isPassword=bcrypt.compareSync(password,exist.password)
     if(!isPassword)return resp.status(400).json({ok:false,msg:'Password invalido'})
-    const user={tel,username:exist.username??"",uid:exist._id.toString()}
+    const user={tel,username:exist.username.toLowerCase()??"",uid:exist._id.toString()}
     const token=await jws.setToken(user)
     return resp.status(200).json({
         ok:true,

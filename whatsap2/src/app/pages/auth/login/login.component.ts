@@ -8,7 +8,7 @@ import { AuthService } from '../../../service/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent   {
   public isError:boolean=false;
   public msg:string="";
   formLogin:FormGroup=this.fb.group({
@@ -17,8 +17,7 @@ export class LoginComponent implements OnInit {
   })
   constructor(private fb:FormBuilder,private authSer:AuthService,private ruta:Router) { }
 
-  ngOnInit(): void {
-  }
+
    validCampos(name:string){
    return this.formLogin.controls[name].errors
    && this.formLogin.controls[name].touched
@@ -29,7 +28,7 @@ export class LoginComponent implements OnInit {
     .subscribe(data=>{
       if (data.ok) {
         this.formLogin.reset()
-        this.isError=true
+        this.isError=false
         setTimeout(() => {
           
           this.ruta.navigateByUrl('/chat')

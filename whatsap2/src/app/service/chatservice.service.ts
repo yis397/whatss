@@ -4,11 +4,13 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { IMensajes } from '../interfaces/models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatserviceService {
+  
   public ischatSelect:boolean=false;
   private baseurl=environment.baseUrl
   private headers=new HttpHeaders()
@@ -54,7 +56,7 @@ export class ChatserviceService {
       catchError(err=>of(err.error))
     )
   }
-  sendMensaje(data:any,callback?: Function){
+  sendMensaje(data:IMensajes,callback?: Function){
 
     this.socket.emit('mensaje',data,callback)
   }

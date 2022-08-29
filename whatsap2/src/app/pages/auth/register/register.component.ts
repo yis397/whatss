@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
       if (data.ok) {
         this.isError=true
         setTimeout(() => {
-          this.ruta.navigateByUrl('/chat')
+          this.ruta.navigate(['chat'])
           
         }, 1000);
         return
