@@ -32,34 +32,43 @@ const mensageSend=async(data)=>{
    
    const mensage=new Mensage(data);
    await mensage.save()
-   sendNotificacion(remitente.username??remitente.tel,remitente.token??'nop')
-   if (remitente.token) {
-       sendNotificacion(remitente.username??remitente.tel,remitente.token)
+   if (destino.token!=='"NEL"') {
+
+       sendNotificacion(destino.username??destino.tel,mensage.mensaje,destino.token)
    }
    return {mensage,user:{username:remitente.username,tel:remitente.tel,uid:remitente.id}}
 }
-const sendNotificacion=(nombre,token)=>{
-    console.log(process.env.publicKey);
-    console.log(token);
-    /* 
-    const vapidKeys = webpush.generateVAPIDKeys();
-webpush.setVapidDetails(
-    'mailto:example@yourdomain.org',
-    vapidKeys.publicKey,
-    vapidKeys.privateKey
-  );
+const sendNotificacion=(nombre,mensaje,token)=>{
+   
+    
+    const vapidKeys = {
+        "publicKey":process.env.publicKey,
+"privateKey":process.env.privateKey
+    }
+
+    const sub=JSON.parse(JSON.parse(token))
+    
+     webpush.setVapidDetails(
+         'mailto:example@yourdomain.org',
+         vapidKeys.publicKey,
+         vapidKeys.privateKey
+       );
   
     payload={
-        'notification':{
-        title:'Nuevo mensaje de '+nombre,
-        vibrate:[100,50,100],
-        actions:[{action:'explore'}]
+        "notification":{
+            "title":'Mensaje nuevo de '+nombre,
+            'body':mensaje,
+            "vibrate":[100,50,100],
+            'actions':[{
+                'action':'explore',
+                'title':'Go'
+            }]
         }
     }
     webpush.sendNotification(
-     JSON.parse(token),
+        sub,
      JSON.stringify(payload))
-     .then(resp=>console.log('enviado')).catch(err=>console.log('error push')) */
+     .then(resp=>console.log('enviado')).catch(err=>console.log(err))
 }
 module.exports={
     usuarioConectado,
