@@ -19,5 +19,8 @@ ruta.post('/addContacto',[
     check('telefono','Telefono requerido').notEmpty(),
     expressValidator,validToken
 ],user.addContacto)
+ruta.get('/contacts',[
+    validToken
+],user.getListContactos)
 
  module.exports= ruta

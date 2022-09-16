@@ -13,11 +13,11 @@ const { isUser } = require("../helpers/jws");
     socketEvents() {
         // On connection
         this.io.on('connection',async (socket) => {
-           console.log('cliente conectado');
+          /*  console.log('cliente conectado'); */
            const token= socket.handshake.query['x-token'];
            const [valid,uid]=isUser(token)
            if (!valid) {
-            console.log('identificaciones incorrectas');
+            /* console.log('identificaciones incorrectas'); */
             return socket.disconnect()
            }
             await   usuarioConectado(uid)

@@ -1,33 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <title>Whatsap2</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body class="container">
+<body>
+  <h2>hola mundo</h2>
 
-    <h1 class="mt-5">Acceso denegado</h1>
-    <hr>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js" integrity="sha512-AcZyhRP/tbAEsXCCGlziPun5iFvcSUpEz2jKkx0blkYKbxU81F+iq8FURwPn1sYFeksJ+sDDrI5XujsqSobWdQ==" crossorigin="anonymous"></script>
-
-    <script>
-        // Conexión con el socket server
-        const socket = io('http://localhost:8080');
-
-        
-        /// Para emitir
-        // socket.emit('mensaje-to-server', { data });
-        
-        // Para escuchar
-        socket.on('mensaje-from-server', (data) => {
-            // callback a ejecutar
-        });
-        
-
-    </script>
-    
-</body>
-</html>
+</body></html>

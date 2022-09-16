@@ -42,7 +42,6 @@ export class RegisterComponent implements OnInit {
     this.authServ.registro({username,tel,password})
     .subscribe(data=>{
       if (data.ok) {
-        this.isError=true
         setTimeout(() => {
           this.ruta.navigate(['chat'])
           

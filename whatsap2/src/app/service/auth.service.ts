@@ -49,7 +49,7 @@ export class AuthService {
          }
       }),
       map(resp=>resp),
-      catchError(err=>of(err.error)
+      catchError(err=>of(err.error),
       ))
   }
 

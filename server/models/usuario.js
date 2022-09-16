@@ -8,6 +8,9 @@ const schemaUsuario=new mongoose.Schema({
     username:{
         type:String,
     },
+    token:{
+        type:String,
+    },
     password:{
         type:String,
         required:true

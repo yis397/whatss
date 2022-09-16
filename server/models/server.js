@@ -8,7 +8,7 @@ const cors     = require('cors');
 const Sockets  = require('../models/socket');
 const { dbConnection } = require('../db/dbmongo');
 
-var whitelist = ['http://localhost:4200',"https://localhost:8080"]
+var whitelist = ['http://localhost:4200',"https://localhost:8080",'https://chat-sapp.netlify.app','https://chat-sapp.netlify.app/chat']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -31,7 +31,7 @@ class Server {
         this.server =  http.createServer( this.app );
         
         this.io = socketio( this.server,{  cors: {
-            origin: ["https://localhost:8080","http://localhost:4200"],
+            origin: ["https://localhost:8080","http://localhost:4200",'https://chat-sapp.netlify.app','https://chat-sapp.netlify.app/chat'],
             methods: ["GET", "POST"]
           }}
         );
@@ -60,8 +60,8 @@ class Server {
 
         this.configurarSockets();
 
-        this.server.listen( this.port, () => {
-            console.log('Server corriendo en puerto:', this.port );
+        this.server.listen( process.env.PORT||8080, () => {
+            console.log('Server corriendo en puerto:' );
         });
     }
 

@@ -71,7 +71,6 @@ export class ChatComponent implements OnInit,OnDestroy {
 
   }
   sendMensage(form2:NgForm){
-    console.log(this.user);
     const mensaje=form2.value.mensage
     const data:IMensajes={destino:this.selectConversacion.contacto.uid,remitente:this.user.uid,mensaje}
     this.chatService.sendMensaje(data)
